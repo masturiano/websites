@@ -1,0 +1,158 @@
+1. wamp apache httpd.conf
+##	onlineoffline tag - don't remove
+AllowOverride None to AllowOverride All
+
+<Directory "c:/websites/">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.4/mod/core.html#options
+    # for more information.
+    #
+    Options Indexes FollowSymLinks
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   AllowOverride FileInfo AuthConfig Limit
+    #
+    AllowOverride all
+
+    #
+    # Controls who can get stuff from this server.
+    #
+
+#   onlineoffline tag - don't remove
+    Require local
+</Directory>
+
+2.
+
+C:\Windows\System32\drivers\etc
+
+hosts
+
+127.0.0.1 test
+
+3.
+
+C:\wamp\bin\apache\apache2.4.9\conf
+filename: httpd.conf
+
+uncomment: LoadModule rewrite_module modules/mod_rewrite.so
+uncomment: Include conf/extra/httpd-vhosts.conf
+
+
+4.
+
+C:\wamp\bin\apache\apache2.4.9\conf\extra
+
+(ADD)
+
+<Directory c:/websites>
+    Options Indexes FollowSymlinks
+    DirectoryIndex index.php
+    AllowOverride All
+    Order Deny,Allow
+    Allow from all
+</Directory> 
+#
+# Use name-based virtual hosting
+#
+NameVirtualHost *:80  
+#
+# VirtualHost example:
+# Almost any Apache directive may go into a VirtualHost container.
+# The first VirtualHost section is used for all requests that do not
+# match a ServerName or ServerAlias in any <VirtualHost> block.
+#
+<Directory c:/websites>
+    Options Indexes FollowSymlinks
+    DirectoryIndex index.php
+    AllowOverride All
+    Order Deny,Allow
+    Allow from all
+</Directory>
+
+
+<VirtualHost *:80>
+    DocumentRoot "C:/wamp/www"
+    ServerName localhost
+</VirtualHost>
+
+(ADD END)
+
+
+COMPOSER.PHAR
+
+Download Composer
+Windows Installer
+
+The installer will download composer for you and set up your PATH environment variable so you can simply call composer from any directory.
+
+Download and run Composer-Setup.exe - it will install the latest composer version whenever it is executed.
+Command-line installation
+
+Run this in your terminal to get the latest Composer version:
+
+php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php
+php -r "if (hash_file('SHA384', 'composer-setup.php') === 'a52be7b8724e47499b039d53415953cc3d5b459b9d9c0308301f867921c19efc623b81dfef8fc2be194a5cf56945d223') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+This installer script will simply check some php.ini settings, warn you if they are set incorrectly, and then download the latest composer.phar in the current directory. The 4 lines above will, in order:
+
+    Download the installer to the current directory
+    Verify the installer SHA-384 which you can also cross-check here
+    Run the installer
+    Remove the installer
+
+WARNING: Please do not redistribute the install code. It will change with every version of the installer. Instead, please link to this page.
+Installer Options
+--install-dir
+
+You can install composer to a specific directory by using the --install-dir option and providing a target directory. Options must be appended to -- so that PHP ignores them, like -- --install-dir=bin, example:
+php composer-setup.php --install-dir=bin
+--filename
+
+You can specify the filename (default: composer.phar) using the --filename option. example:
+php composer-setup.php --filename=composer
+--version
+
+You can install composer to a specific release by using the --version option and providing a target release. example:
+php composer-setup.php --version=1.0.0-alpha8
+Preview / Snapshot Releases
+
+By default the installer and composer self-update will download stable versions only. If you would like to help test pre-release versions you can use the --preview flag on either installer or self-update. For snapshot builds which are done from the latest Composer commit, you can use the --snapshot flag.
+Manual Download
+
+If you prefer to download the phar manually, here are the available versions:
+
+Latest Snapshot  = href ito click to download then paste sa application
+1.0.2 (2016-04-21)
+1.0.1 (2016-04-18)
+1.0.0 (2016-04-05)
+1.0.0-beta2 (2016-03-27)
+1.0.0-beta1 (2016-03-03)
+1.0.0-alpha11 (2015-11-14)
+1.0.0-alpha10 (2015-04-14)
+1.0.0-alpha9 (2014-12-07)
+1.0.0-alpha8 (2014-01-06)
+1.0.0-alpha7 (2013-05-04)
+1.0.0-alpha6 (2012-10-23)
+1.0.0-alpha5 (2012-08-18)
+1.0.0-alpha4 (2012-07-04)
+1.0.0-alpha3 (2012-05-13)
+1.0.0-alpha2 (2012-04-03)
+1.0.0-alpha1 (2012-03-01)
+
+------------------------------------------------
+
+https://packagist.org/
+go to app program: execute on ming git: composer install
