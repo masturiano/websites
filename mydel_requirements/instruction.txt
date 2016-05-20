@@ -156,3 +156,7 @@ Latest Snapshot  = href ito click to download then paste sa application
 
 https://packagist.org/
 go to app program: execute on ming git: composer install
+
+------------------------------------------------
+
+Service locator design pattern
