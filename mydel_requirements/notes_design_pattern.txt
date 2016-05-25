@@ -1,0 +1,13 @@
+php.net/manual/en/block
+www.mindmeister.com
+
+
+Practice the object relational mapping
+
+-=(Design Pattern)=-
+Table Data Gateway
+Raw Data Gateway
+Active Record
+Data Mapper
+
+Last minute: 33.01
