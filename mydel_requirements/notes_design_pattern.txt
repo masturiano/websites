@@ -10,4 +10,6 @@ Raw Data Gateway
 Active Record
 Data Mapper
 
-Last minute: 33.01
+Service Locator Design Pattern
+
+Last minute: 38.07

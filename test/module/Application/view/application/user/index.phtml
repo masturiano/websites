@@ -1,1 +1,26 @@
 <h1>Index = Retrieve</h1>
+<a href="<?php echo $this->url('application/default', array(
+        'controller' => 'user',
+        'action' => 'index',
+    )
+); ?>">Create</a>
+
+<table>
+    <tr>
+        <th>user_id</th>
+        <th>username</th>
+        <th>password</th>
+    </tr>
+    <? 
+    foreach($rowset as $row)
+    {
+    ?>
+        <tr>                         
+            <td><?php echo $row['user_id'];?></td>
+            <td><?php echo $row['username'];?></td>
+            <td><?php echo $row['password'];?></td>
+        </tr>
+    <? 
+    }
+    ?>
+</table>
