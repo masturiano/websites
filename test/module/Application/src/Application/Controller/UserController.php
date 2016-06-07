@@ -16,13 +16,15 @@ use Zend\Db\TableGateway\TableGateway; // for table data gateway
 
 class UserController extends AbstractActionController
 {
-    private $usersTable;
+    public $usersTable;
     // R - retrieve CRUD
     public function indexAction()
-    {                          
+    {       
         return new ViewModel(
             array('rowset' => $this->getUsersTable()->select())
+            //array('rowset' => 'test')
         );
+        
     }
     // C - create CRUD
     public function createAction()
@@ -43,11 +45,8 @@ class UserController extends AbstractActionController
     public function getUsersTable()
     {
         if(!$this->usersTable)
-        {
-            $this->usersTable  = new TableGateway(
-                'users',
-                $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter')
-            );   
+        {        
+            $this->usersTable  = new TableGateway('users',$this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));   
         }
         return $this->usersTable;
     }

@@ -52,6 +52,7 @@ uncomment: Include conf/extra/httpd-vhosts.conf
 4.
 
 C:\wamp\bin\apache\apache2.4.9\conf\extra
+httpd-vhosts.conf
 
 (ADD)
 
