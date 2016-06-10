@@ -1,26 +1,46 @@
-<h1>Index = Retrieve</h1>
-<a href="<?php echo $this->url('application/default', array(
+<h1>Index = Retrieve</h1> 
+<a href="<?php echo $this->url('application/default', 
+    array(
         'controller' => 'user',
-        'action' => 'index',
+        'action' => 'create',
     )
 ); ?>">Create</a>
-
 <table>
     <tr>
         <th>user_id</th>
         <th>username</th>
         <th>password</th>
+        <th>fullname</th>
     </tr>
-    <? 
-    foreach($rowset as $row)
+    <?php 
+    foreach($this->rowset as $row)
     {
     ?>
         <tr>                         
-            <td><?php echo $row['user_id'];?></td>
-            <td><?php echo $row['username'];?></td>
-            <td><?php echo $row['password'];?></td>
+            <td><?php echo $row['user_id']; ?></td>
+            <td><?php echo $row['username']; ?></td>
+            <td><?php echo $row['password']; ?></td>
+            <td><?php echo $row['full_name']; ?></td>
+            <td>
+                <a href="<?php echo $this->url('application/default', 
+                    array(
+                        'controller' => 'user',
+                        'action' => 'update',
+                        'id' =>  $row['user_id'],
+                    )
+                ); ?>">Edit</a>
+            </td>
+            <td>
+                <a href="<?php echo $this->url('application/default', 
+                    array(
+                        'controller' => 'user',
+                        'action' => 'delete',
+                        'id' =>  $row['user_id'],
+                    )
+                ); ?>">Delete</a>
+            </td>
         </tr>
-    <? 
+    <?php 
     }
     ?>
 </table>

@@ -10,9 +10,12 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Zend\View\Model\ViewModel;         
                          
 use Zend\Db\TableGateway\TableGateway; // for table data gateway
+
+use Application\Form\UserForm;
+use Application\Form\UserFilter;
 
 class UserController extends AbstractActionController
 {
@@ -24,12 +27,30 @@ class UserController extends AbstractActionController
             array('rowset' => $this->getUsersTable()->select())
             //array('rowset' => 'test')
         );
-        
     }
     // C - create CRUD
     public function createAction()
     {
-        return new ViewModel();
+        $form = new UserForm();
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            $form->setInputFilter(new UserFilter());
+            $form->setData($request->getPost());
+            if($form->isValid())
+            {
+                $data = $form->getData();
+                unset($data['submit']);
+                $this->getUsersTable()->insert($data);
+                return $this->redirect()->toRoute('application/default',
+                    array(
+                        'controller' => 'user',
+                        'action' => 'index',
+                    )
+                );
+            }  
+        }
+        return new ViewModel(array('form' => $form));
     }
     // U - update CRUD
     public function updateAction()
